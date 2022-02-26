@@ -4,6 +4,8 @@ include_once "../../vendor/autoload.php";
 include_once "../models/WorkModel.php";
 include_once "../models/UserModel.php";
 include_once "../controllers/WorksController.php";
+use Jenssegers\Blade\Blade;
+
 //////////////////////////WEB.PHP AT HOME//////////////////////////////////
 ///
 //  THE ROUTING OF THIS PROJECT IS DONE BY A MIDDLEWARE (BASICALLY LARAVEL'S WEB.PHP AT HOME),
@@ -15,7 +17,6 @@ include_once "../controllers/WorksController.php";
 ///
 /////////////////////////END OF MIDDLEWARE DESCRIPTION///////////////
 
-use Jenssegers\Blade\Blade;
 
 $request = htmlspecialchars($_GET['request']);
 
@@ -82,19 +83,19 @@ if (isset($_POST['newWork'])) {
                 //POST ROUTING AT HOME//
 switch ($postRequest) {
     case 'newWork':
-        $_POST['user_id'] = htmlspecialchars($_REQUEST['user_id']);
+        $_POST['user_id'] = htmlspecialchars($_GET['user_id']);
         $uploadWorkToDatabaseInstance = new WorksController();
         $uploadWorkToDatabaseInstance->sendWorkData($_POST);
         header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
         break;
     case 'deleteWork':
         $eraseWorkInstance = new WorksController();
-        $eraseWorkInstance->eraseWorkById($_REQUEST['work_id']);
+        $eraseWorkInstance->eraseWorkById($_POST['work_id']);
         header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
         break;
     case 'modifyWork':
         $updateWorkInstance = new WorksController();
-        $updateWorkInstance->modifyWorkById($_REQUEST['work_id'], $_SESSION['user_id'], $_POST);
+        $updateWorkInstance->modifyWorkById($_POST['work_id'], $_SESSION['user_id'], $_POST);
         header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
         break;
     default:

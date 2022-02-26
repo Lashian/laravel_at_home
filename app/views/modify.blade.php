@@ -33,6 +33,7 @@
                                     $flagDisabled = "disabled";
                                 }
                             @endphp
+                                <input type="hidden" name="work_id" id="work_id" value="<?php echo $_GET['work_id']?>">
                                 <label>full_name</label>
                                 <input name="full_name" class="form-control" id="full_name" value='{{$singleRowOfWorkData['full_name_works']}}' {{$flagDisabled}}>
                                 <label>phone_number</label>
@@ -60,6 +61,8 @@
                                 </select><br>
                                 <label>Town</label>
                                 <input name="town" class="form-control" id="town" value='{{$singleRowOfWorkData['town_works']}}' {{$flagDisabled}}>
+                                <label>date due</label>
+                                <input type="date" name="date_due_works" id="date_due_works" value="{{$singleRowOfWorkData['date_due_works']}}" class="form-control">
                                 <label>CP</label>
                                 <input name="cp" type="number" class="form-control" id="cp" value='{{$singleRowOfWorkData['cp_works']}}' {{$flagDisabled}}>
                                 @php

@@ -27,6 +27,7 @@
                     <form action="../middleware/RoutingMiddleware.php" method="post" class="contact-form">
                         <div class="col-sm-6 contact-form-left">
                             <div class="form-group">
+                                <input type="hidden" name="work_id" id="work_id" value="<?php echo $_GET['work_id']?>">
                                 <label>full_name</label>
                                 <input name="full_name" class="form-control" id="full_name" value='<?php echo e($deleteViewData['full_name_works']); ?>' disabled>
                                 <label>phone_number</label>
