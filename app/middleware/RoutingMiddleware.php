@@ -4,6 +4,7 @@ include_once "../../vendor/autoload.php";
 include_once "../models/WorkModel.php";
 include_once "../models/UserModel.php";
 include_once "../controllers/WorksController.php";
+
 use Jenssegers\Blade\Blade;
 
 //////////////////////////WEB.PHP AT HOME//////////////////////////////////
@@ -20,7 +21,7 @@ use Jenssegers\Blade\Blade;
 
 $request = htmlspecialchars($_GET['request']);
 
-                //GET ROUTING AT HOME//
+//GET ROUTING AT HOME//
 switch ($request) {
     case 'edit':
         if (isset($_GET['work_id'])) {
@@ -80,7 +81,7 @@ if (isset($_POST['newWork'])) {
     $postRequest = 'modifyWork';
 }
 
-                //POST ROUTING AT HOME//
+//POST ROUTING AT HOME//
 switch ($postRequest) {
     case 'newWork':
         $_POST['user_id'] = htmlspecialchars($_GET['user_id']);
@@ -95,8 +96,10 @@ switch ($postRequest) {
         break;
     case 'modifyWork':
         $updateWorkInstance = new WorksController();
-        $updateWorkInstance->modifyWorkById($_POST['work_id'], $_POST);
-        header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
+        $success = $updateWorkInstance->modifyWorkById($_POST['work_id'], $_POST);
+        if ($success) {
+            header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
+        }
         break;
     default:
         break;

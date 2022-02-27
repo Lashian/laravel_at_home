@@ -21,7 +21,7 @@ class WorksController
 
     public function modifyWorkById($work_id, $updatedWorkData){
         $modifyWorkInstance = new WorkModel();
-        $modifyWorkInstance->updateWorkById($work_id, $updatedWorkData);
+        return $modifyWorkInstance->updateWorkById($work_id, $updatedWorkData);
     }
 
     public function eraseWorkById($work_id){

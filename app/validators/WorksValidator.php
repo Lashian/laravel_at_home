@@ -36,8 +36,17 @@ class WorksValidators
     }
 
     public function validatesWorkPhoneNumber($phone_number){
-        if(!preg_match('/[+0-9]/', $phone_number)){
-            return "Can only contain numbers and/or the international country number";
+        if(!preg_match("/^[\+0-9\-\(\)\s]*$/", $phone_number)){
+            return "Can only contain numbers or phone symbols";
+        }
+        return false;
+    }
+
+    public function validatesDateDue($date_due_works){
+        $date_now = date("Y-m-d"); // this format is string comparable
+
+        if (!($date_due_works > $date_now)){
+           return 'The date for this work has to be in the future';
         }
         return false;
     }

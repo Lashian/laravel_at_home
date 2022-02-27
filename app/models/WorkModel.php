@@ -3,7 +3,7 @@ error_reporting(E_ERROR | E_PARSE);
 include_once "../../connect_db.php";
 include_once "UserModel.php";
 include_once "../validators/WorksValidator.php";
-include_once"../controllers/WorksController.php";
+include_once "../controllers/WorksController.php";
 
 class WorkModel
 {
@@ -117,7 +117,7 @@ class WorkModel
         $deleteWorkByIdQueryBind = ['works_id' => $work_id];
         $deleteWorkByIdStmt = $deleteWorkConnection->prepare($deleteWorkByIdQuery);
         $deleteWorkByIdStmt->execute($deleteWorkByIdQueryBind);
-        header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=".$_SESSION['user_id']);
+        header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
     }
 
     public function updateWorkById($work_id, $updatedWorkData)
@@ -152,6 +152,8 @@ class WorkModel
             $workDescriptionError = $instanceWorksValidator->validatesWorksDescription($updatedWorkData['description']);
             $workEmailError = $instanceWorksValidator->validatesWorksEmail($updatedWorkData['email']);
             $workCpError = $instanceWorksValidator->validatesWorksPostalCode($updatedWorkData['cp']);
+            $dateDueWork = $instanceWorksValidator->validatesDateDue($updatedWorkData['date_due_works']);
+            $noValidationForWorker = false;
 
             $modifyWorkByIdQueryBind = [
                 'full_name_works' => htmlspecialchars($updatedWorkData['full_name']),
@@ -169,6 +171,7 @@ class WorkModel
                 'works_id' => htmlspecialchars($work_id)
             ];
         } else {
+            $noValidationForWorker = true;
             $modifyWorkByIdQuery = "
         UPDATE tareas
         SET 
@@ -184,7 +187,20 @@ class WorkModel
         }
 
         $modifyWorkByIdStmt = $modifyWorkConnection->prepare($modifyWorkByIdQuery);
-        $modifyWorkByIdStmt->execute($modifyWorkByIdQueryBind);
+        if (($workNameError === false && $workPhoneNumberError === false && $workDescriptionError === false && $workEmailError === false && $workCpError === false && $dateDueWork == false) || $noValidationForWorker) {
+            $modifyWorkByIdStmt->execute($modifyWorkByIdQueryBind);
+            return true;
+        } else {
+            echo $workNameError . "<br>";
+            echo $workPhoneNumberError . "<br>";
+            echo $workDescriptionError . "<br>";
+            echo $workEmailError . "<br>";
+            echo $workCpError . "<br>";
+            echo $dateDueWork . "<br>";
+
+            return false;
+        }
+
     }
 
     public function getWorkerNotesColumn($work_id)
@@ -198,7 +214,8 @@ class WorkModel
         return $workEditStmt->fetchColumn();
     }
 
-    public function getAllWorks(){
+    public function getAllWorks()
+    {
         $worksQueryInstance = new DatabaseConnection();
         $worksQueryConnection = $worksQueryInstance->connect();
         $allWorksQuery = "SELECT * FROM tareas";
