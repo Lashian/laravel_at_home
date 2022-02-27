@@ -3,10 +3,10 @@ include_once "../models/UserModel.php";
 
 class UserController
 {
-    public function getUserRole($user_id): string
+    public function getUserRole(): string
     {
         $userModelInstance = new UserModel();
-        return $userModelInstance->getUserRoleById($user_id);
+        return $userModelInstance->getUserRoleById();
     }
 
     public function sendUserIdByUserName($username){

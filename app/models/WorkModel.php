@@ -85,13 +85,13 @@ class WorkModel
     }
 
     //In this function in expecting a user ID from the user that it's logged in
-    public function getUsersWorks($user_id): array
+    public function getUsersWorks(): array
     {
         $worksList = new DatabaseConnection();
         $usersWorksConnection = $worksList->connect();
         $getUsersWorksQuery = "SELECT * FROM tareas WHERE user_id = :user_id";
         $getUsersWorksQueryStmt = $usersWorksConnection->prepare($getUsersWorksQuery);
-        $getUsersWorksQueryBinds = ['user_id' => $user_id];
+        $getUsersWorksQueryBinds = ['user_id' => $_SESSION['user_id']];
         $getUsersWorksQueryStmt->execute($getUsersWorksQueryBinds);
 
         return $getUsersWorksQueryStmt->fetchAll();
@@ -120,13 +120,13 @@ class WorkModel
         header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=".$_SESSION['user_id']);
     }
 
-    public function updateWorkById($work_id, $user_id, $updatedWorkData)
+    public function updateWorkById($work_id, $updatedWorkData)
     {
         $modifyWorkInstance = new DatabaseConnection();
         $modifyWorkConnection = $modifyWorkInstance->connect();
 
         $userRoleInstance = new UserModel();
-        $userRole = $userRoleInstance->getUserRoleById($user_id);
+        $userRole = $userRoleInstance->getUserRoleById();
 
         if ($userRole == "admin") {
             $modifyWorkByIdQuery = "
@@ -184,15 +184,7 @@ class WorkModel
         }
 
         $modifyWorkByIdStmt = $modifyWorkConnection->prepare($modifyWorkByIdQuery);
-        if ($workNameError === false && $workPhoneNumberError === false && $workDescriptionError === false && $workEmailError === false && $workCpError === false) {
-            $modifyWorkByIdStmt->execute($modifyWorkByIdQueryBind);
-        } else {
-            echo $workNameError . "<br>";
-            echo $workPhoneNumberError . "<br>";
-            echo $workDescriptionError . "<br>";
-            echo $workEmailError . "<br>";
-            echo $workCpError . "<br>";
-        }
+        $modifyWorkByIdStmt->execute($modifyWorkByIdQueryBind);
     }
 
     public function getWorkerNotesColumn($work_id)
@@ -204,5 +196,12 @@ class WorkModel
         $workEditBinds = ['works_id' => $work_id];
         $workEditStmt->execute($workEditBinds);
         return $workEditStmt->fetchColumn();
+    }
+
+    public function getAllWorks(){
+        $worksQueryInstance = new DatabaseConnection();
+        $worksQueryConnection = $worksQueryInstance->connect();
+        $allWorksQuery = "SELECT * FROM tareas";
+        return $worksQueryConnection->query($allWorksQuery);
     }
 }

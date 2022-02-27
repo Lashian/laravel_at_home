@@ -33,7 +33,7 @@ switch ($request) {
 
             if (session_status() === PHP_SESSION_ACTIVE) {
                 $userLoginInstance = new UserModel;
-                $user_role = $userLoginInstance->getUserRoleById($singleRowOfWorkData['user_id']);
+                $user_role = $userLoginInstance->getUserRoleById();
                 $_SESSION['user_role'] = $user_role;
             }
 
@@ -47,7 +47,7 @@ switch ($request) {
         }
 
         $worksControllerInstance = new WorksController();
-        $worksControllerInstance->displayWorksByUserID($userId);
+        $worksControllerInstance->displayWorksByUserID();
         break;
     case 'delete':
         if (isset($_GET['work_id'])) {
@@ -95,7 +95,7 @@ switch ($postRequest) {
         break;
     case 'modifyWork':
         $updateWorkInstance = new WorksController();
-        $updateWorkInstance->modifyWorkById($_POST['work_id'], $_SESSION['user_id'], $_POST);
+        $updateWorkInstance->modifyWorkById($_POST['work_id'], $_POST);
         header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
         break;
     default:

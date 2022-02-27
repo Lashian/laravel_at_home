@@ -18,11 +18,13 @@ if(isset($_POST['login'])){
 
     $loginControllerInstance = new LoginController();
     $user_id = $loginControllerInstance->loginValidUserAndReturnUserId($userLoginBlade,$userPasswordBlade);
+    if($user_id){
         $userLoginInstance = new UserModel;
-        $user_role = $userLoginInstance->getUserRoleById($user_id);
+        $user_role = $userLoginInstance->getUserRoleById();
         $_SESSION['user_id'] = $user_id;
         $_SESSION['user_role'] = $user_role;
-    $workControllerLoginInstance = new WorksController();
-    $workControllerLoginInstance->displayWorksByUserID($user_id);
+        $workControllerLoginInstance = new WorksController();
+        $workControllerLoginInstance->displayWorksByUserID();
+    }
 }
 ?>

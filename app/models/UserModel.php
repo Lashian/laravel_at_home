@@ -19,14 +19,14 @@ class UserModel
         return $userCredentialsStmt->fetch(); //gives back the result found
     }
 
-    public function getUserRoleById($user_id): string
+    public function getUserRoleById(): string
     {
         $db = new DatabaseConnection();
         $conn = $db->connect();
         $userRoleQuery = 'SELECT user_role FROM user WHERE user_id = :user_id';
         $userRoleQueryStmt = $conn->prepare($userRoleQuery);
         $userRoleQueryStmt->execute([
-            'user_id' => $user_id
+            'user_id' => $_SESSION['user_id']
         ]);
         $userRole = $userRoleQueryStmt->fetchColumn();
 

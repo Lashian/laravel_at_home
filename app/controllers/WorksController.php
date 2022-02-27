@@ -7,21 +7,21 @@ include_once "./app/controllers/WorksController.php";
 class WorksController
 {
 
-    public function displayWorksByUserID($user_id)
+    public function displayWorksByUserID()
     {
          $showUserWorksInstance = new WorkModel();
-         $userWorks = $showUserWorksInstance->getUsersWorks($user_id);
+         $userWorks = $showUserWorksInstance->getAllWorks();
 
          $userControllerInstance = new UserController();
-         $userRole = array('user_role'=>$userControllerInstance->getUserRole($user_id));
+         $userRole = array('user_role'=>$userControllerInstance->getUserRole());
 
          $showRegistrationFormBladeObject = new Blade();
          echo $showRegistrationFormBladeObject->make('works', $userRole)->with('userWorks',$userWorks);
     }
 
-    public function modifyWorkById($work_id, $user_id, $updatedWorkData){
+    public function modifyWorkById($work_id, $updatedWorkData){
         $modifyWorkInstance = new WorkModel();
-        $modifyWorkInstance->updateWorkById($work_id, $user_id, $updatedWorkData);
+        $modifyWorkInstance->updateWorkById($work_id, $updatedWorkData);
     }
 
     public function eraseWorkById($work_id){

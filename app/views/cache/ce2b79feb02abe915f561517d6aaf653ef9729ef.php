@@ -62,7 +62,7 @@
                                 <label>Town</label>
                                 <input name="town" class="form-control" id="town" value='<?php echo e($singleRowOfWorkData['town_works']); ?>' <?php echo e($flagDisabled); ?>>
                                 <label>date due</label>
-                                <input type="date" name="date_due_works" id="date_due_works" value="<?php echo e($singleRowOfWorkData['date_due_works']); ?>" class="form-control">
+                                <input type="date" name="date_due_works" id="date_due_works" value="<?php echo e($singleRowOfWorkData['date_due_works']); ?>" <?php echo e($flagDisabled); ?> class="form-control">
                                 <label>CP</label>
                                 <input name="cp" type="number" class="form-control" id="cp" value='<?php echo e($singleRowOfWorkData['cp_works']); ?>' <?php echo e($flagDisabled); ?>>
                                 <?php
