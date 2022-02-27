@@ -4,7 +4,6 @@ class WorksValidators
 {
     public function validatesWorksName($full_name_works)
     {
-
         if (!preg_match('/^[a-zA-Z\'\-\040]+$/', $full_name_works)) {
             return "Only letters and white space allowed";
         }
@@ -43,7 +42,7 @@ class WorksValidators
     }
 
     public function validatesDateDue($date_due_works){
-        $date_now = date("Y-m-d"); // this format is string comparable
+        $date_now = date("Y-m-d");
 
         if (!($date_due_works > $date_now)){
            return 'The date for this work has to be in the future';

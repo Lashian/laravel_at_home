@@ -86,8 +86,10 @@ switch ($postRequest) {
     case 'newWork':
         $_POST['user_id'] = htmlspecialchars($_GET['user_id']);
         $uploadWorkToDatabaseInstance = new WorksController();
-        $uploadWorkToDatabaseInstance->sendWorkData($_POST);
-        header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
+        $success = $uploadWorkToDatabaseInstance->sendWorkData($_POST);
+        if ($success) {
+            header("Location: http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=worksList&user_id=" . $_SESSION['user_id']);
+        }
         break;
     case 'deleteWork':
         $eraseWorkInstance = new WorksController();
