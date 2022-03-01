@@ -16,7 +16,7 @@ use Jenssegers\Blade\Blade;
 ?>
 @if ($user_role == "admin")
     @php
-    echo '<a href="http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=newWork&user_id='.$_SESSION['user_id'].'" class="btn btn-primary">New Work</a>';
+    echo '<a href="http://localhost/PHP_plain_project_done/app/middleware/RoutingMiddleware.php?request=newWork&user_id='.$_SESSION['user_id'].'" class="btn btn-primary">Nuevo Trabajo</a>';
     @endphp
 @endif
 @yield('content')
