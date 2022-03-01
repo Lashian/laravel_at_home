@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center inner">
                     <div class="contact-content">
-                        <h1>New work</h1>
+                        <h1>Registrar trabajo</h1>
                     </div>
                 </div>
             </div>
@@ -20,25 +20,25 @@
                 <div class="col-lg-12">
                     <form action="../middleware/RoutingMiddleware.php" method="post" class="contact-form">
                         <div class="col-sm-6 contact-form-left">
-                            <label>full_name</label>
+                            <label>Nombre</label>
                             <input name="full_name" class="form-control" id="full_name">
-                            <label>phone_number</label>
+                            <label>Telefono</label>
                             <input name="phone_number" class="form-control" id="phone_number">
-                            <label>description</label>
+                            <label>Descripcion</label>
                             <input name="description" class="form-control" id="description">
-                            <label>email</label>
+                            <label>Email</label>
                             <input name="email" class="form-control" id="email">
-                            <label>address</label>
+                            <label>Direccion</label>
                             <input name="address" class="form-control" id="address">
-                            <label>County</label>
+                            <label>Provincia</label>
                             <select name="county" class="form-control" id="county">
                                 <option value='Huelva'>Huelva</option>
                                 <option value='Sevilla'>Sevilla</option>
                                 <option value='Cadiz'>Cadiz</option>
                             </select><br>
-                            <label>date due</label>
+                            <label>Fecha entrega</label>
                             <input type="date" name="date_due_works" id="date_due_works" class="form-control">
-                            <label>Town</label>
+                            <label>Ciudad</label>
                             <input name="town" class="form-control" id="town">
                             <label>CP</label>
                             <input name="cp" type="number" class="form-control" id="cp">
@@ -53,10 +53,10 @@
                             <label for="done">Done</label>
 
                             <br><br>
-                            <label>worker_name</label>
+                            <label>Nombre encargado</label>
                             <input name='worker_name' class='form-control' id='worker_name'>
 
-                            <label>admin_notes_works</label>
+                            <label>Notas administrativo</label>
                             <input name="admin_notes_works" class="form-control" id="admin_notes_works">
                             <br>
                             <button type="submit" id="newWork" name="newWork" class="btn btn-primary">New work

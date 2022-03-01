@@ -28,15 +28,15 @@
                         <div class="col-sm-6 contact-form-left">
                             <div class="form-group">
                                 <input type="hidden" name="work_id" id="work_id" value="<?php echo $_GET['work_id']?>">
-                                <label>full_name</label>
+                                <label>Nombre</label>
                                 <input name="full_name" class="form-control" id="full_name" value='{{$deleteViewData['full_name_works']}}' disabled>
-                                <label>phone_number</label>
+                                <label>Telefono</label>
                                 <input name="phone_number" class="form-control" id="phone_number" value='{{$deleteViewData['phonenumber_works']}}' disabled>
-                                <label>description</label>
+                                <label>Descipcion</label>
                                 <input name="description" class="form-control" id="description" value='{{$deleteViewData['description_works']}}' disabled>
-                                <label>email</label>
+                                <label>Email</label>
                                 <input name="email" class="form-control" id="email" value='{{$deleteViewData['email_works']}}' disabled>
-                                <label>address</label>
+                                <label>Direccion</label>
                                 <input name="address" class="form-control" id="address" value='{{$deleteViewData['address_works']}}' disabled>
                                 @php
                                     if($deleteViewData['county_works'] == "Huelva"){
@@ -47,13 +47,13 @@
                                         $selectedCadiz = "selected";
                                     }
                                 @endphp
-                                <label>County</label>
+                                <label>Provincia</label>
                                 <select name="county" class="form-control" id="county" disabled>
                                     <option value='Huelva' {{$selectedHuelva}}>Huelva</option>
                                     <option value='Sevilla' {{$selectedSevilla}}>Sevilla</option>
                                     <option value='Cadiz' {{$selectedCadiz}}>Cadiz</option>
                                 </select><br>
-                                <label>Town</label>
+                                <label>Ciudad</label>
                                 <input name="town" class="form-control" id="town" value='{{$deleteViewData['town_works']}}' disabled>
                                 <label>CP</label>
                                 <input name="cp" type="number" class="form-control" id="cp" value='{{$deleteViewData['cp_works']}}' disabled>
@@ -74,11 +74,11 @@
                                 <input type="radio" id="done" name="status" value="done" {{$checkDone}} disabled>
                                 <label for="done">Done</label>
                                 <br><br>
-                                <label>admin_notes_works</label>
+                                <label>Notas administrativo</label>
                                 <input name="admin_notes_works" class="form-control" id="admin_notes_works" value='{{$deleteViewData['admin_notes_works']}}' disabled>
                                 <label>worker_name</label>
                                 <input name='worker_name' class='form-control' id='worker_name' value='{{$deleteViewData['worker_name_works']}}' disabled>
-                                    <label>worker_notes_works</label>
+                                    <label>Notas encargado</label>
                                     <input name="worker_notes_works" class="form-control" id="worker_notes_works" value='{{$deleteViewData['worker_notes_works']}}' disabled>
                                 <button type="submit" id="deleteWork" name="deleteWork" class="btn btn-default">Delete Work</button>
                             </div>

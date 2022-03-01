@@ -15,23 +15,23 @@
         <thead class="thead-dark">
         <tr style="font-weight: bold;">
             <?php if(isset($user_role)): ?>
-                <th scope="col">full_name_works</th>
-                <th scope="col">phonenumber_works</th>
-                <th scope="col">description_works</th>
-                <th scope="col">email_works</th>
-                <th scope="col">address_works</th>
-                <th scope="col">county</th>
-                <th scope="col">town_works</th>
-                <th scope="col">cp_works</th>
-                <th scope="col">status_works</th>
-                <th scope="col">date_of_creation_works</th>
-                <th scope="col">worker_name_works</th>
-                <th scope="col">admin_notes_works</th>
-                <th scope="col">worker_notes_works</th>
-                <th scope="col">date_due_works</th>
-                <th scope="col">Edit</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Email</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Provincia</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">CP</th>
+                <th scope="col">Status</th>
+                <th scope="col">Fecha creacion</th>
+                <th scope="col">Nombre encargado</th>
+                <th scope="col">Notas administrativo</th>
+                <th scope="col">Notas encargado</th>
+                <th scope="col">Fecha entrega</th>
+                <th scope="col">Editar</th>
                 <?php if($user_role == "admin"): ?>
-                    <th scope="col">Delete</th>
+                    <th scope="col">Borrar</th>
                 <?php endif; ?>
         </tr>
         </thead>

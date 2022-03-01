@@ -66,12 +66,6 @@ class WorkModel
             'user_id' => $_SESSION['user_id']
         ];
 
-        //Create a new controller called error Handler.php
-        //inside the error handler we make a function
-        //the function will have error codes
-        //so for example error 1 is gonna be full_name error
-        //the function is gonna recieve the get codes from the get
-        //and it's going to echo error message based on the code
         if ($workNameError === false && $workPhoneNumberError === false && $workDescriptionError === false && $workEmailError === false && $workCpError === false) {
             $insertNewWorkStmt->execute($insertNewWorkStmtBinds);
         } else {
@@ -84,7 +78,7 @@ class WorkModel
 
     }
 
-    //In this function in expecting a user ID from the user that it's logged in
+    //Revisar tras blade
     public function getUsersWorks(): array
     {
         $worksList = new DatabaseConnection();

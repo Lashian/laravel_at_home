@@ -34,15 +34,15 @@
                                 }
                             @endphp
                                 <input type="hidden" name="work_id" id="work_id" value="<?php echo $_GET['work_id']?>">
-                                <label>full_name</label>
+                                <label>Nombre</label>
                                 <input name="full_name" class="form-control" id="full_name" value='{{$singleRowOfWorkData['full_name_works']}}' {{$flagDisabled}}>
-                                <label>phone_number</label>
+                                <label>Telefono</label>
                                 <input name="phone_number" class="form-control" id="phone_number" value='{{$singleRowOfWorkData['phonenumber_works']}}' {{$flagDisabled}}>
-                                <label>description</label>
+                                <label>Descripcion</label>
                                 <input name="description" class="form-control" id="description" value='{{$singleRowOfWorkData['description_works']}}' {{$flagDisabled}}>
-                                <label>email</label>
+                                <label>Email</label>
                                 <input name="email" class="form-control" id="email" value='{{$singleRowOfWorkData['email_works']}}' {{$flagDisabled}}>
-                                <label>address</label>
+                                <label>Direccion</label>
                                 <input name="address" class="form-control" id="address" value='{{$singleRowOfWorkData['address_works']}}' {{$flagDisabled}}>
                                 @php
                                 if($singleRowOfWorkData['county_works'] == "Huelva"){
@@ -53,15 +53,15 @@
                                 $selectedCadiz = "selected";
                                 }
                                 @endphp
-                                <label>County</label>
+                                <label>Provincia</label>
                                 <select name="county" class="form-control" id="county"  {{$flagDisabled}}>
                                  <option value='Huelva' {{$selectedHuelva}}>Huelva</option>
                                 <option value='Sevilla' {{$selectedSevilla}}>Sevilla</option>
                                 <option value='Cadiz' {{$selectedCadiz}}>Cadiz</option>
                                 </select><br>
-                                <label>Town</label>
+                                <label>Ciudad</label>
                                 <input name="town" class="form-control" id="town" value='{{$singleRowOfWorkData['town_works']}}' {{$flagDisabled}}>
-                                <label>date due</label>
+                                <label>Dia de entrega</label>
                                 <input type="date" name="date_due_works" id="date_due_works" value="{{$singleRowOfWorkData['date_due_works']}}" {{$flagDisabled}} class="form-control">
                                 <label>CP</label>
                                 <input name="cp" type="number" class="form-control" id="cp" value='{{$singleRowOfWorkData['cp_works']}}' {{$flagDisabled}}>
@@ -85,14 +85,14 @@
                                 <label for="done">Done</label>
 
                                 <br><br>
-                                <label>worker_name</label>
+                                <label>Encargado</label>
                                 <input name='worker_name' class='form-control' id='worker_name' value='{{$singleRowOfWorkData['worker_name_works']}}' {{$flagDisabled}}>
 
                                @if($_SESSION['user_role'] == "admin")
-                                <label>{{"admin_notes_works"}}</label>
+                                <label>{{"Notas administrativo"}}</label>
                                 <input name="admin_notes_works" class="form-control" id="admin_notes_works" value='{{$singleRowOfWorkData['admin_notes_works']}}' {{$flagDisabled}}>
                                 @else
-                                <label>worker_notes_works</label>
+                                <label>Notas encargado</label>
                                     @php
                                     if($_SESSION['user_role'] == "admin"){
                                             $flagDisabled = "disabled";

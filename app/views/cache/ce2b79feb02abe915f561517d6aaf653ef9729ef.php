@@ -34,15 +34,15 @@
                                 }
                             ?>
                                 <input type="hidden" name="work_id" id="work_id" value="<?php echo $_GET['work_id']?>">
-                                <label>full_name</label>
+                                <label>Nombre</label>
                                 <input name="full_name" class="form-control" id="full_name" value='<?php echo e($singleRowOfWorkData['full_name_works']); ?>' <?php echo e($flagDisabled); ?>>
-                                <label>phone_number</label>
+                                <label>Telefono</label>
                                 <input name="phone_number" class="form-control" id="phone_number" value='<?php echo e($singleRowOfWorkData['phonenumber_works']); ?>' <?php echo e($flagDisabled); ?>>
-                                <label>description</label>
+                                <label>Descripcion</label>
                                 <input name="description" class="form-control" id="description" value='<?php echo e($singleRowOfWorkData['description_works']); ?>' <?php echo e($flagDisabled); ?>>
-                                <label>email</label>
+                                <label>Email</label>
                                 <input name="email" class="form-control" id="email" value='<?php echo e($singleRowOfWorkData['email_works']); ?>' <?php echo e($flagDisabled); ?>>
-                                <label>address</label>
+                                <label>Direccion</label>
                                 <input name="address" class="form-control" id="address" value='<?php echo e($singleRowOfWorkData['address_works']); ?>' <?php echo e($flagDisabled); ?>>
                                 <?php
                                 if($singleRowOfWorkData['county_works'] == "Huelva"){
@@ -53,15 +53,15 @@
                                 $selectedCadiz = "selected";
                                 }
                                 ?>
-                                <label>County</label>
+                                <label>Provincia</label>
                                 <select name="county" class="form-control" id="county"  <?php echo e($flagDisabled); ?>>
                                  <option value='Huelva' <?php echo e($selectedHuelva); ?>>Huelva</option>
                                 <option value='Sevilla' <?php echo e($selectedSevilla); ?>>Sevilla</option>
                                 <option value='Cadiz' <?php echo e($selectedCadiz); ?>>Cadiz</option>
                                 </select><br>
-                                <label>Town</label>
+                                <label>Ciudad</label>
                                 <input name="town" class="form-control" id="town" value='<?php echo e($singleRowOfWorkData['town_works']); ?>' <?php echo e($flagDisabled); ?>>
-                                <label>date due</label>
+                                <label>Dia de entrega</label>
                                 <input type="date" name="date_due_works" id="date_due_works" value="<?php echo e($singleRowOfWorkData['date_due_works']); ?>" <?php echo e($flagDisabled); ?> class="form-control">
                                 <label>CP</label>
                                 <input name="cp" type="number" class="form-control" id="cp" value='<?php echo e($singleRowOfWorkData['cp_works']); ?>' <?php echo e($flagDisabled); ?>>
@@ -85,14 +85,14 @@
                                 <label for="done">Done</label>
 
                                 <br><br>
-                                <label>worker_name</label>
+                                <label>Encargado</label>
                                 <input name='worker_name' class='form-control' id='worker_name' value='<?php echo e($singleRowOfWorkData['worker_name_works']); ?>' <?php echo e($flagDisabled); ?>>
 
                                <?php if($_SESSION['user_role'] == "admin"): ?>
-                                <label><?php echo e("admin_notes_works"); ?></label>
+                                <label><?php echo e("Notas administrativo"); ?></label>
                                 <input name="admin_notes_works" class="form-control" id="admin_notes_works" value='<?php echo e($singleRowOfWorkData['admin_notes_works']); ?>' <?php echo e($flagDisabled); ?>>
                                 <?php else: ?>
-                                <label>worker_notes_works</label>
+                                <label>Notas encargado</label>
                                     <?php
                                     if($_SESSION['user_role'] == "admin"){
                                             $flagDisabled = "disabled";

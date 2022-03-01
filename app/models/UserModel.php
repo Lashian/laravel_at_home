@@ -16,7 +16,7 @@ class UserModel
             'user_login' => $user_login,
             'user_password' => $user_password
         ]);
-        return $userCredentialsStmt->fetch(); //gives back the result found
+        return $userCredentialsStmt->fetch(); //devuelve el resultado encontrado
     }
 
     public function getUserRoleById(): string
@@ -33,7 +33,7 @@ class UserModel
         return match ($userRole) {
             "admin" => "admin",
             "worker" => "worker",
-            default => "this user has no role!",
+            default => "ERROR: Usuario sin rol",
         };
     }
 
@@ -50,9 +50,9 @@ class UserModel
         $userNameResult = $userNameQueryStmt->fetch();
 
         if ($userNameResult > 0) {
-            echo 'The password is incorrect';
+            echo 'Contraseña incorrecta';
         } else {
-            echo "This user is not registered!";
+            echo "Usuario no registrado";
         }
     }
 
